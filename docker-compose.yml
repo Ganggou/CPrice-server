@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  redis:
+    image: redis:alpine
+  server:
+    image: ccr.ccs.tencentyun.com/ganggou/cprice-server
+    links:
+      - postgres
+      - redis
+    volumes:
+      - .:/usr/src/app
+    environment:
+      DATABASE_URL: postgres://postgres@postgres:5432/cprice_development?pool=25&encoding=unicode&schema_search_path=public
+      DEVISE_JWT_SECRET_KEY: RANDOM_SECRET
+      REDIS_URL: redis://redis:6379
+      WECHAT_APP_ID: wx637326728225034a
+      WECHAT_APP_SECRET: df3066e39b3d85f9ef485a4cfda8a643
+      QINIU_ACCESS_KEY: CFkCO0pDrSV4Hgr4obLp4PB7JRDM5OHNNtRmRSXf
+      QINIU_SECRET_KEY: xO9OeIhKGJSChwBOgLTcVu4yAGBf8FPvEbItt2te
+      TEMPLATE_ACCEPT: gwUOnygnMGftctqqKrAhHg9-pV2NdXURYq68_M_VVrk
+      TEMPLATE_NEW_ORDER: 9G5TWQldfSXE6OSgtshKo8Fzp8DO2N7cm1X6WTI2qz4
+    ports:
+      - 82:80

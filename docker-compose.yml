@@ -18,8 +18,8 @@ services:
       DATABASE_URL: postgres://postgres@postgres:5432/cprice_development?pool=25&encoding=unicode&schema_search_path=public
       DEVISE_JWT_SECRET_KEY: RANDOM_SECRET
       REDIS_URL: redis://redis:6379
-      WECHAT_APP_ID: wx637326728225034a
-      WECHAT_APP_SECRET: df3066e39b3d85f9ef485a4cfda8a643
+      WECHAT_APP_ID: wxc176485d17b65f08
+      WECHAT_APP_SECRET: 1042606b572fa31c8d928a51825a15e7
       QINIU_ACCESS_KEY: CFkCO0pDrSV4Hgr4obLp4PB7JRDM5OHNNtRmRSXf
       QINIU_SECRET_KEY: xO9OeIhKGJSChwBOgLTcVu4yAGBf8FPvEbItt2te
       TEMPLATE_ACCEPT: gwUOnygnMGftctqqKrAhHg9-pV2NdXURYq68_M_VVrk

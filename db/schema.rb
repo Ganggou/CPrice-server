@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_09_021448) do
+ActiveRecord::Schema.define(version: 2020_04_02_024833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -18,64 +18,25 @@ ActiveRecord::Schema.define(version: 2019_08_09_021448) do
 
   create_table "goods", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.integer "count", default: 1
+    t.string "platform_id"
     t.string "image"
-    t.integer "price", null: false
-    t.string "details"
-    t.integer "state", default: 1
-    t.uuid "type_id", null: false
-    t.uuid "merchant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["merchant_id"], name: "index_goods_on_merchant_id"
+    t.string "short_id"
   end
 
-  create_table "merchants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.uuid "jti", null: false
-    t.datetime "remember_created_at"
-    t.string "name"
-    t.string "category"
-    t.string "address"
-    t.string "tel"
-    t.string "description"
-    t.string "logo"
-    t.jsonb "data", default: {}
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "wx_openid"
-    t.index ["email"], name: "index_merchants_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
-  end
-
-  create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "price"
-    t.string "note"
-    t.integer "state", default: 0
-    t.integer "merchant_operation", default: 0
-    t.boolean "user_operation", default: false
-    t.jsonb "details", default: []
-    t.uuid "user_id", null: false
-    t.uuid "merchant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["merchant_id"], name: "index_orders_on_merchant_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "platforms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.uuid "merchant_id", null: false
-    t.index ["merchant_id"], name: "index_types_on_merchant_id"
+    t.string "tag"
+  end
+
+  create_table "records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "good_id"
+    t.integer "price"
+    t.string "currency"
+    t.datetime "remember_created_at"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "wx_openid"
-    t.string "address"
-    t.boolean "info_registered", default: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -85,8 +46,4 @@ ActiveRecord::Schema.define(version: 2019_08_09_021448) do
     t.index ["wx_openid"], name: "index_users_on_wx_openid", unique: true
   end
 
-  add_foreign_key "goods", "merchants"
-  add_foreign_key "orders", "merchants"
-  add_foreign_key "orders", "users"
-  add_foreign_key "types", "merchants"
 end

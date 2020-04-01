@@ -16,10 +16,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  resources :users do
-    collection do
-      post 'info_register'
-    end
-  end
 end

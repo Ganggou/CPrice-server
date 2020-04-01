@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_024833) do
+ActiveRecord::Schema.define(version: 2020_04_02_024835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -32,17 +32,22 @@ ActiveRecord::Schema.define(version: 2020_04_02_024833) do
     t.uuid "good_id"
     t.integer "price"
     t.string "currency"
-    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "good_id"
+    t.integer "state"
+    t.integer "match_value"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "wx_openid"
-    t.datetime "remember_created_at"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "mobile"
-    t.string "form_id"
     t.index ["wx_openid"], name: "index_users_on_wx_openid", unique: true
   end
 

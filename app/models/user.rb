@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :tasks
   devise :database_authenticatable, :registerable, :rememberable, :timeoutable, :jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
 
   # Set other keys in payload, you can also append them in blacklist redis key

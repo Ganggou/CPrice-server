@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :records, only: [:index]
 
+  resources :tasks, only: %i[index create]
+
   namespace :users do
     resources :verifications do
       collection do

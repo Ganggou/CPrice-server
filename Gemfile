@@ -6,6 +6,7 @@ gemfiles.each do |gemfile|
 end
 gem 'devise'
 gem 'devise-jwt'
+gem 'ffi'
 gem 'httparty'
 gem 'qiniu'
 gem 'redis-objects'

@@ -1,5 +1,9 @@
 class GoodsController < ApplicationController
   def index
+    render json: {
+      ok: true,
+      data: Good.all
+    }
   end
 
   #name and price not null , post

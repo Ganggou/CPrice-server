@@ -5,6 +5,7 @@ class CreateGoods < ActiveRecord::Migration[6.0]
       t.string  :platform_id
       t.string  :image
       t.string  :short_id
+      t.integer :price
     end
   end
 end

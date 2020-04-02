@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :goods, only: %i[index create update destroy]
 
+  resources :records, only: [:index]
+
   namespace :users do
     resources :verifications do
       collection do

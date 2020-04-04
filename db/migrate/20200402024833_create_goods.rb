@@ -6,6 +6,7 @@ class CreateGoods < ActiveRecord::Migration[6.0]
       t.string  :image
       t.string  :short_id
       t.integer :price
+      t.timestamps null: false
     end
   end
 end

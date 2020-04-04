@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 2020_04_02_024835) do
     t.string "platform_id"
     t.string "image"
     t.string "short_id"
+    t.integer "price"
   end
 
   create_table "platforms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
+    t.string "code"
     t.string "tag"
   end
 
@@ -39,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_024835) do
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.uuid "good_id"
-    t.integer "state"
+    t.integer "state", default: 0
     t.integer "match_value"
   end
 

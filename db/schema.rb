@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_024835) do
     t.string "image"
     t.string "short_id"
     t.integer "price"
+    t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,7 +36,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_024835) do
   create_table "records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "good_id"
     t.integer "price"
-    t.string "currency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

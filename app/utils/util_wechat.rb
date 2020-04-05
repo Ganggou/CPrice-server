@@ -8,16 +8,22 @@ module UtilWechat
       ret['access_token']
     end
 
-    def template_message_send(openid, template_id, form_id, data)
+    def template_message_send(openid, template_id, data)
+      tmp = {}
+      data.each do |i, v|
+        t = {}
+        t['value'] = v
+        tmp[i] = t
+      end
       access_token = UtilWechat.wx_access_token
-      ret = HTTParty.post("https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=#{access_token}",
+      ret = HTTParty.post("https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=#{access_token}",
                     headers: { 'Content-Type' => 'application/json' },
                     body:
                     {
                       touser: openid,
                       template_id: template_id,
-                      form_id: form_id,
-                      data: data
+                      page: "pages/index/index",
+                      data: tmp
                     }.to_json).body
       JSON.parse(ret)
     end

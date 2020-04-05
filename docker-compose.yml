@@ -25,4 +25,4 @@ services:
       TEMPLATE_ACCEPT: gwUOnygnMGftctqqKrAhHg9-pV2NdXURYq68_M_VVrk
       TEMPLATE_NEW_ORDER: 9G5TWQldfSXE6OSgtshKo8Fzp8DO2N7cm1X6WTI2qz4
     ports:
-      - 82:80
+      - 80:80

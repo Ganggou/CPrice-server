@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match 'ping' => 'application#ping', via: :all
   match 'auth_ping' => 'application#auth_ping', via: :all
   match 'get_code' => 'application#get_code', via: :all
+  match 'fetchTemplateIds' => 'application#fetchTemplateIds', via: :all
 
   resources :goods, only: %i[index create update destroy]
 

@@ -33,4 +33,11 @@ class ApplicationController < ActionController::API
       ]
     }, status: :bad_request
   end
+
+  def fetchTemplateIds
+    render json: {
+      ok: true,
+      ids: $redis.smembers(:tmp_ids)
+    }
+  end
 end

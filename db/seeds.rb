@@ -7,3 +7,5 @@ p = Platform.create(name: '美亚', code: 'UA')
 Good.create(name: '健身环大冒险', short_id: "B07XV4NHHN", platform_id: p.id, image: 'https://images-na.ssl-images-amazon.com/images/I/51ZIQxjxTxL._SS160_.jpg', currency: '$')
 Good.create(name: 'Switch动物森友会主题限定', short_id: "B084DDDNRP", platform_id: p.id, image: 'https://images-na.ssl-images-amazon.com/images/I/41BN3S9T1ZL._SS160_.jpg', currency: '$')
 Good.create(name: '《动物森友会》游戏卡带', short_id: "B07SL6ZXBL", platform_id: p.id, image: 'https://images-na.ssl-images-amazon.com/images/I/515HXo4AYSL._SS160_.jpg', currency: '$')
+$redis.sadd('tmp_ids', ['WGkFprmp_aVoCDgzeV5UWDuCwdVL9pxXChITdsMYWKg'])
+

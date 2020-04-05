@@ -5,6 +5,8 @@ class CreateTask < ActiveRecord::Migration[6.0]
       t.uuid  :good_id
       t.integer  :state, default: 0
       t.integer  :match_value
+      t.string :form_id
+      t.datetime :end_time
     end
   end
 end

@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2020_04_02_024835) do
     t.uuid "good_id"
     t.integer "state", default: 0
     t.integer "match_value"
+    t.string "form_id"
+    t.datetime "end_time"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

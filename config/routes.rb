@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   resources :records, only: [:index]
 
-  resources :tasks, only: %i[index create]
+  resources :tasks, only: %i[index create] do
+    collection do
+      post 'sleep'
+    end
+  end
 
   namespace :users do
     resources :verifications do

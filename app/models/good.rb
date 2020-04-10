@@ -11,10 +11,10 @@ class Good < ApplicationRecord
       if p.present?
         socket.write("colly #{p.code} #{g.short_id}")
         price = socket.readline
-        if price.present? && price != 'err'
-          g.price = price
+        if price.present? && !price.include?('err')
+          g.price = price.to_i
           g.save
-          g.records.create(price: price)
+          g.records.create(price: price.to_i)
         end
       end
     end

@@ -40,4 +40,15 @@ class ApplicationController < ActionController::API
       ids: $redis.smembers(:tmp_ids)
     }
   end
+
+  def data
+    data = []
+    Good.all.each do |g|
+      data << { id: g.short_id, image: g.image, threshold: g.price / 100.0, name: g.name, updated_at: g.updated_at }
+    end
+    render json: {
+      ok: true,
+      data: data
+    }
+  end
 end

@@ -43,8 +43,10 @@ class ApplicationController < ActionController::API
 
   def data
     data = []
-    Good.all.each do |g|
-      data << { id: g.short_id, image: g.image, threshold: g.price / 100.0, name: g.name, updated_at: g.updated_at }
+    if Record.count > 3
+      Good.all.each do |g|
+        data << { id: g.short_id, image: g.image, threshold: g.price / 100.0, name: g.name, updated_at: g.updated_at }
+      end
     end
     render json: {
       ok: true,

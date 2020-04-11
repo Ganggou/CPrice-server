@@ -1,4 +1,3 @@
-require "socket"
 require "timeout"
 
 class Good < ApplicationRecord
@@ -6,27 +5,25 @@ class Good < ApplicationRecord
   has_many :records
 
   def self.generate_record
-    socket = UNIXSocket.new('/tmp/offerlist.sock')
     Good.all.each do |g|
       p = Platform.find_by_id(g.platform_id)
       if p.present?
-        3.times {
-          begin
-            Timeout::timeout(15) {
-              socket.write("colly #{p.code} #{g.short_id}")
-              price = socket.readline
-              if price.present? && !price.include?('err')
-                g.price = price.to_i
-                g.save
-                g.records.create(price: price.to_i)
-              end
-              break
-            }
-          rescue
-          end
-        }
+        begin
+          Timeout::timeout(15) {
+            request = "#{$redis.get('colly_url')}/colly?platform_id=#{p.code}&short_id=#{g.short_id}"
+            body = HTTParty.post(request).body
+            data= JSON.parse(body)
+            price = data['price']
+            if price.present? && !price.to_i.zero?
+              g.price = price.to_i
+              g.save
+              g.records.create(price: price.to_i)
+            end
+            break
+          }
+        rescue
+        end
       end
     end
-    socket.close
   end
 end

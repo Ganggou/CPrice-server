@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   match 'data' => 'application#data', via: :all
   match 'fetchTemplateIds' => 'application#fetchTemplateIds', via: :all
 
+  resources :platforms, only: [:index]
+
   resources :goods, only: %i[index create update destroy]
 
   resources :records, only: [:index]

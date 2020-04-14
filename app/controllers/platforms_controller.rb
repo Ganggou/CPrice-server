@@ -2,7 +2,7 @@ class PlatformsController < ApplicationController
   def index
     render json: {
       ok: true,
-      data: Platform.all
+      data: hash_by_id(Platform.all)
     }
   end
 end

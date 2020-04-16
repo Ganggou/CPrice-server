@@ -3,14 +3,14 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-p = Platform.create(name: '美亚', code: 'UA')
+p = Platform.create(name: '美亚', code: 'UA', url: 'https://www.amazon.com/gp/offer-listing/')
 Good.create(name: '健身环大冒险', short_id: "B07XV4NHHN", platform_id: p.id, image: 'https://images-na.ssl-images-amazon.com/images/I/51ZIQxjxTxL._SS160_.jpg', currency: '$')
 Good.create(name: 'Switch动物森友会主题限定', short_id: "B084DDDNRP", platform_id: p.id, image: 'https://images-na.ssl-images-amazon.com/images/I/41BN3S9T1ZL._SS160_.jpg', currency: '$')
 Good.create(name: '《动物森友会》游戏卡带', short_id: "B07SL6ZXBL", platform_id: p.id, image: 'https://images-na.ssl-images-amazon.com/images/I/515HXo4AYSL._SS160_.jpg', currency: '$')
 $redis.sadd('tmp_ids', ['WGkFprmp_aVoCDgzeV5UWDuCwdVL9pxXChITdsMYWKg'])
 
 p2 = Platform.create(name: '淘宝', code: 'TAO')
-p3 = Platform.create(name: '宁波老猎人', code: 'TAO', upper_id: p2.id)
+p3 = Platform.create(name: '宁波老猎人', code: 'TAO', upper_id: p2.id, url: 'https://item.taobao.com/item.htm?id=')
 Good.create(name: '塞尔达传说 荒野之息', short_id: '555975271807', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i1/3191851519/O1CN01pjQuZt1N5kCF88HF0_!!3191851519.png_180x180.jpg', currency: '¥')
 Good.create(name: '超级马里奥 奥德赛', short_id: '560676385101', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i3/3191851519/O1CN01b1Ly1b1N5kCBH3uq7_!!3191851519.png_180x180.jpg', currency: '¥')
 Good.create(name: '宝可梦 剑盾', short_id: '607365392889', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i1/3191851519/O1CN01s4atBu1N5kCEjQ8Gm_!!3191851519.png_180x180.jpg', currency: '¥')
@@ -30,5 +30,3 @@ Good.create(name: '星之卡比', short_id: '566067212041', platform_id: p3.id, 
 Good.create(name: '火焰之纹章', short_id: '599620160269', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i1/3191851519/O1CN01OfmvFD1N5kCBArImA_!!3191851519.png_180x180.jpg', currency: '¥')
 Good.create(name: '塞尔达传说 织梦岛', short_id: '603449836045', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i1/3191851519/O1CN015c46XS1N5kCBu1Lqi_!!3191851519.png_180x180.jpg', currency: '¥')
 Good.create(name: '舞力全开2019', short_id: '580977717246', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i3/3191851519/O1CN01hjVMgc1N5kCAj8KBp_!!3191851519.png_180x180.jpg', currency: '¥')
-
-

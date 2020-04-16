@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
 
     render json: {
       ok: true,
-      data: good.records
+      data: good.records.where('created_at > ?', Time.now - 1.month).order(:created_at)
     }
   end
 end

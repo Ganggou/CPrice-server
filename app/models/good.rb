@@ -18,6 +18,7 @@ class Good < ApplicationRecord
               price = data['price']
               if price.present? && !price.to_i.zero?
                 g.price = price.to_i
+                g.updated_at = Time.now
                 g.save
                 g.records.create(price: price.to_i)
                 to_break = true

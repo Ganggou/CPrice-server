@@ -1,5 +1,5 @@
 puts [
-  "* * */2 * * Good.generate_record",
+  "0 */12 * * * Good.generate_record",
   "13 * * * * Task.check"
 ].map { |job|
   *schedule, cmd = job.split(' ')

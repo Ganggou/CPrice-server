@@ -6,6 +6,16 @@ class GoodsController < ApplicationController
     }
   end
 
+  def detail
+    good = Good.find_by_id(params[:id])
+    return render_ok(false) unless good.present?
+
+    render json: {
+      ok: true,
+      data: good
+    }
+  end
+
   #name and price not null , post
   def create
   end

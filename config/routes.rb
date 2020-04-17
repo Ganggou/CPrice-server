@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   resources :platforms, only: [:index]
 
-  resources :goods, only: %i[index create update destroy]
+  resources :goods, only: %i[index create update destroy] do
+    collection do 
+      get 'detail'
+    end
+  end
 
   resources :records, only: [:index]
 

@@ -30,3 +30,6 @@ Good.create(name: '星之卡比', short_id: '566067212041', platform_id: p3.id, 
 Good.create(name: '火焰之纹章', short_id: '599620160269', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i1/3191851519/O1CN01OfmvFD1N5kCBArImA_!!3191851519.png_180x180.jpg', currency: '¥')
 Good.create(name: '塞尔达传说 织梦岛', short_id: '603449836045', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i1/3191851519/O1CN015c46XS1N5kCBu1Lqi_!!3191851519.png_180x180.jpg', currency: '¥')
 Good.create(name: '舞力全开2019', short_id: '580977717246', platform_id: p3.id, image: 'https://img.alicdn.com/bao/uploaded/i3/3191851519/O1CN01hjVMgc1N5kCAj8KBp_!!3191851519.png_180x180.jpg', currency: '¥')
+
+p4 = Platform.create(name: '中亚', code: 'CA', url: 'https://www.amazon.cn/dp/')
+Good.create(name: '任天堂 Switch Lite', short_id: 'B07SLM9772', platform_id: p4.id, image: 'https://images-cn.ssl-images-amazon.com/images/I/71YmJ3uhJ8L._AC_SX679_.jpg', currency: '¥')

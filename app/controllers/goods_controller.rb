@@ -12,7 +12,8 @@ class GoodsController < ApplicationController
 
     render json: {
       ok: true,
-      data: good
+      good: good,
+      records: good.records.where('created_at > ?', Time.now - 1.month).order(:created_at)
     }
   end
 

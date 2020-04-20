@@ -26,9 +26,8 @@ class TasksController < ApplicationController
     else
       current_user.tasks.create(
         good_id: good_id,
-        match_value: params[:match_value],
+        match_value: params[:match_value].to_i,
         end_time: Time.now + 7.day,
-        match_value: params[:price].to_i,
         form_id: form_id
       )
     end

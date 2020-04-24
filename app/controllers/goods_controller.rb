@@ -13,7 +13,7 @@ class GoodsController < ApplicationController
     render json: {
       ok: true,
       good: good,
-      records: good.records.where('created_at > ?', Time.now - 7.day).order(:created_at),
+      records: good.records.where('price > 0').where('created_at > ?', Time.now - 7.day).order(:created_at),
       lowest: good.records.where('price > 0').order(:price).first,
       month_lowest: good.records.where('created_at > ?', Time.now.at_beginning_of_month).where('price > 0').order(:price).first
     }

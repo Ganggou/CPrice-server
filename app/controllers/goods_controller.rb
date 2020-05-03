@@ -2,7 +2,7 @@ class GoodsController < ApplicationController
   def index
     render json: {
       ok: true,
-      data: Good.all
+      data: Good.order(:platform_id)
     }
   end
 

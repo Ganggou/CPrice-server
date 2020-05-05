@@ -31,6 +31,7 @@ class Good < ApplicationRecord
           end
         end
       end
+      sleep(2)
     end
   end
 end

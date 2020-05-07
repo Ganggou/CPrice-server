@@ -22,7 +22,7 @@ class GoodsController < ApplicationController
     p = Platform.find_by_id(params[:pid])
     return render_ok(false) unless p.present?
 
-    goods = Good.where(platform_id: p.id),where('id > ?', params[:id]).order(:id).limit(20)
+    goods = Good.where(platform_id: p.id).where('id > ?', params[:id]).order(:id).limit(20)
     render json: {
       ok: true,
       data: goods

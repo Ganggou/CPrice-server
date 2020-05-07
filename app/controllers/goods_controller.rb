@@ -6,6 +6,29 @@ class GoodsController < ApplicationController
     }
   end
 
+  def hash_by_p
+    a = {}
+    Platform.all.each do |p|
+      goods = Good.where(platform_id: p.id).order(:id).limit(20)
+      a[p.id] = goods
+    end
+    render json: {
+      ok: true,
+      data: a
+    }
+  end
+
+  def fetch
+    p = Platform.find_by_id(params[:pid])
+    return render_ok(false) unless p.present?
+
+    goods = Good.where(platform_id: p.id),where('id > ?', params[:id]).order(:id).limit(20)
+    render json: {
+      ok: true,
+      data: goods
+    }
+  end
+
   def detail
     good = Good.find_by_id(params[:id])
     return render_ok(false) unless good.present?

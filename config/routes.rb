@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :goods, only: %i[index create update destroy] do
     collection do 
+      get 'hash_by_p'
+      get 'fetch'
       get 'detail'
     end
   end

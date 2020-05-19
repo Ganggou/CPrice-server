@@ -42,6 +42,17 @@ class GoodsController < ApplicationController
     }
   end
 
+  def search
+    return render_ok(false) unless params[:key].present?
+
+    goods = Good.where("search_string LIKE ?", "%#{params[:key]}%")
+
+    render json: {
+      ok: true,
+      data: goods
+    }
+  end
+
   #name and price not null , post
   def create
   end

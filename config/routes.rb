@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'hash_by_p'
       get 'fetch'
       get 'detail'
+      get 'search'
     end
   end
 
